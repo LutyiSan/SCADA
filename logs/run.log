@@ -1,0 +1,595 @@
+16-01-2022 at 10:33:06 | INFO | READY Connect to data base
+16-01-2022 at 10:33:06 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:33:06 | INFO | TIME Connecting to 10.21.80.209 | 0.06929445266723633
+16-01-2022 at 10:34:16 | ERROR | timeout
+16-01-2022 at 10:34:16 | DEBUG | FAIL reading 10.21.80.209 | 325
+16-01-2022 at 10:35:06 | INFO | READY Connect to data base
+16-01-2022 at 10:35:06 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:35:06 | INFO | TIME Connecting to 10.21.80.209 | 0.046828508377075195
+16-01-2022 at 10:35:07 | INFO | DEVICE 10.21.80.209: READ TIME 0.9348623752593994 | reading 8 registers
+16-01-2022 at 10:35:59 | INFO | READY Connect to data base
+16-01-2022 at 10:35:59 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:35:59 | INFO | TIME Connecting to 10.21.80.209 | 0.05561637878417969
+16-01-2022 at 10:36:00 | INFO | DEVICE 10.21.80.209: READ TIME 1.0934910774230957 | reading 8 registers
+16-01-2022 at 10:37:15 | INFO | READY Connect to data base
+16-01-2022 at 10:37:15 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:37:15 | INFO | TIME Connecting to 10.21.80.209 | 0.058266401290893555
+16-01-2022 at 10:37:15 | INFO | DEVICE 10.21.80.209: READ TIME 0.13608121871948242 | reading 8 registers
+16-01-2022 at 10:38:07 | INFO | READY Connect to data base
+16-01-2022 at 10:38:07 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:38:07 | INFO | TIME Connecting to 10.21.80.209 | 0.04784703254699707
+16-01-2022 at 10:38:07 | INFO | DEVICE 10.21.80.209: READ TIME 0.1236417293548584 | reading 8 registers
+16-01-2022 at 10:38:48 | INFO | READY Connect to data base
+16-01-2022 at 10:38:49 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:38:49 | INFO | TIME Connecting to 10.21.80.209 | 0.048242807388305664
+16-01-2022 at 10:38:49 | INFO | DEVICE 10.21.80.209: READ TIME 0.12217450141906738 | reading 8 registers
+16-01-2022 at 10:42:34 | INFO | READY Connect to data base
+16-01-2022 at 10:42:34 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:42:34 | INFO | TIME Connecting to 10.21.80.209 | 0.04589700698852539
+16-01-2022 at 10:42:34 | INFO | DEVICE 10.21.80.209: READ TIME 0.11452627182006836 | reading 8 registers
+16-01-2022 at 10:42:34 | DEBUG | CLOSE connection
+16-01-2022 at 10:43:08 | INFO | READY Connect to data base
+16-01-2022 at 10:43:08 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:43:08 | INFO | TIME Connecting to 10.21.80.209 | 0.048224687576293945
+16-01-2022 at 10:43:08 | INFO | DEVICE 10.21.80.209: READ TIME 0.13512396812438965 | reading 8 registers
+16-01-2022 at 10:43:08 | DEBUG | CLOSE connection
+16-01-2022 at 10:49:17 | INFO | READY Connect to data base
+16-01-2022 at 10:49:17 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:49:17 | INFO | TIME Connecting to 10.21.80.209 | 0.04488563537597656
+16-01-2022 at 10:49:18 | INFO | DEVICE 10.21.80.209: READ TIME 1.0926151275634766 | reading 8 registers
+16-01-2022 at 10:49:18 | DEBUG | CLOSE connection
+16-01-2022 at 10:51:15 | INFO | READY Connect to data base
+16-01-2022 at 10:51:20 | ERROR | FAIL connect to 10.21.80.209
+timed out
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x0000016525389620>
+    -> <__main__.Runner object at 0x00000165230073D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x0000016525389120>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000165253AB550>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x0000016525327C40>
+                    |    -> <modbus.driver.Modbus object at 0x00000165253ABF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000165253AB550>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x00000165253613A0>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    -> <modbus.driver.Modbus object at 0x00000165253ABF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+
+TimeoutError: timed out
+16-01-2022 at 10:51:20 | ERROR | FAIL connect to 10.21.80.209
+[WinError 10022] Получен недопустимый аргумент
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x0000016525389620>
+    -> <__main__.Runner object at 0x00000165230073D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x0000016525389120>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000165253AB550>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x0000016525327C40>
+                    |    -> <modbus.driver.Modbus object at 0x00000165253ABF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000165253AB550>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x00000165253613A0>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    -> <modbus.driver.Modbus object at 0x00000165253ABF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x00000165253BC990>
+
+OSError: [WinError 10022] Получен недопустимый аргумент
+16-01-2022 at 10:51:20 | INFO | TIME Connecting to 10.21.80.209 | 5.019202709197998
+16-01-2022 at 10:52:03 | INFO | READY Connect to data base
+16-01-2022 at 10:52:16 | INFO | READY Connect to data base
+16-01-2022 at 10:52:16 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:52:16 | INFO | TIME Connecting to 10.21.80.209 | 0.04726696014404297
+16-01-2022 at 10:52:17 | INFO | DEVICE 10.21.80.209: READ TIME 0.9446489810943604 | reading 0 registers
+16-01-2022 at 10:52:17 | DEBUG | CLOSE connection
+16-01-2022 at 10:53:35 | INFO | READY Connect to data base
+16-01-2022 at 10:53:36 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:53:36 | INFO | TIME Connecting to 10.21.80.209 | 1.068650484085083
+16-01-2022 at 10:53:37 | INFO | DEVICE 10.21.80.209: READ TIME 0.9245858192443848 | reading 56 registers
+16-01-2022 at 10:53:37 | DEBUG | CLOSE connection
+16-01-2022 at 10:56:27 | INFO | READY Connect to data base
+16-01-2022 at 10:56:32 | ERROR | FAIL connect to 10.21.80.209
+timed out
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001D09355D580>
+    -> <__main__.Runner object at 0x000001D0911173D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001D09355D080>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001D09357F610>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001D0934E7BA0>
+                    |    -> <modbus.driver.Modbus object at 0x000001D093590050>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001D09357F610>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001D093539300>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    -> <modbus.driver.Modbus object at 0x000001D093590050>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+
+TimeoutError: timed out
+16-01-2022 at 10:56:32 | ERROR | FAIL connect to 10.21.80.209
+[WinError 10022] Получен недопустимый аргумент
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001D09355D580>
+    -> <__main__.Runner object at 0x000001D0911173D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001D09355D080>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001D09357F610>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001D0934E7BA0>
+                    |    -> <modbus.driver.Modbus object at 0x000001D093590050>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001D09357F610>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001D093539300>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    -> <modbus.driver.Modbus object at 0x000001D093590050>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001D093590A50>
+
+OSError: [WinError 10022] Получен недопустимый аргумент
+16-01-2022 at 10:56:32 | INFO | TIME Connecting to 10.21.80.209 | 5.022640705108643
+16-01-2022 at 10:56:36 | INFO | READY Connect to data base
+16-01-2022 at 10:56:40 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:56:40 | INFO | TIME Connecting to 10.21.80.209 | 3.0896506309509277
+16-01-2022 at 10:56:41 | INFO | DEVICE 10.21.80.209: READ TIME 1.0778615474700928 | reading 56 registers
+16-01-2022 at 10:56:41 | DEBUG | CLOSE connection
+16-01-2022 at 10:57:50 | INFO | READY Connect to data base
+16-01-2022 at 10:57:55 | ERROR | FAIL connect to 10.21.80.209
+timed out
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x0000023312DF9580>
+    -> <__main__.Runner object at 0x00000233109F7410>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x0000023312DF9080>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000023312E1B510>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x0000023312D87BA0>
+                    |    -> <modbus.driver.Modbus object at 0x0000023312E1BF10>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000023312E1B510>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x0000023312DD1300>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    -> <modbus.driver.Modbus object at 0x0000023312E1BF10>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+
+TimeoutError: timed out
+16-01-2022 at 10:57:55 | ERROR | FAIL connect to 10.21.80.209
+[WinError 10022] Получен недопустимый аргумент
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x0000023312DF9580>
+    -> <__main__.Runner object at 0x00000233109F7410>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x0000023312DF9080>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000023312E1B510>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x0000023312D87BA0>
+                    |    -> <modbus.driver.Modbus object at 0x0000023312E1BF10>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000023312E1B510>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x0000023312DD1300>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    -> <modbus.driver.Modbus object at 0x0000023312E1BF10>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x0000023312E2C810>
+
+OSError: [WinError 10022] Получен недопустимый аргумент
+16-01-2022 at 10:57:55 | INFO | TIME Connecting to 10.21.80.209 | 5.032284498214722
+16-01-2022 at 10:57:57 | INFO | READY Connect to data base
+16-01-2022 at 10:58:04 | INFO | READY Connect to data base
+16-01-2022 at 10:58:09 | ERROR | FAIL connect to 10.21.80.209
+timed out
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001716DE59440>
+    -> <__main__.Runner object at 0x000001716BAD73D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001716DE58F40>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001716DE7B590>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001716DDF7A60>
+                    |    -> <modbus.driver.Modbus object at 0x000001716DE7BF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001716DE7B590>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001716DE2D1C0>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    -> <modbus.driver.Modbus object at 0x000001716DE7BF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+
+TimeoutError: timed out
+16-01-2022 at 10:58:09 | ERROR | FAIL connect to 10.21.80.209
+[WinError 10022] Получен недопустимый аргумент
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001716DE59440>
+    -> <__main__.Runner object at 0x000001716BAD73D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001716DE58F40>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001716DE7B590>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001716DDF7A60>
+                    |    -> <modbus.driver.Modbus object at 0x000001716DE7BF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001716DE7B590>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 22, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001716DE2D1C0>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    -> <modbus.driver.Modbus object at 0x000001716DE7BF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001716DE88990>
+
+OSError: [WinError 10022] Получен недопустимый аргумент
+16-01-2022 at 10:58:09 | INFO | TIME Connecting to 10.21.80.209 | 5.026764869689941
+16-01-2022 at 10:58:27 | INFO | READY Connect to data base
+16-01-2022 at 10:58:27 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 10:58:27 | INFO | TIME Connecting to 10.21.80.209 | 0.06996941566467285
+16-01-2022 at 10:58:28 | INFO | DEVICE 10.21.80.209: READ TIME 1.1557424068450928 | reading 56 registers
+16-01-2022 at 10:58:28 | DEBUG | CLOSE connection
+16-01-2022 at 11:05:16 | INFO | READY Connect to data base
+16-01-2022 at 11:05:16 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 11:05:16 | INFO | TIME Connecting to 10.21.80.209 | 0.051183462142944336
+16-01-2022 at 11:05:17 | INFO | DEVICE 10.21.80.209: READ TIME 1.0944454669952393 | reading 56 registers
+16-01-2022 at 11:05:17 | DEBUG | CLOSE connection
+16-01-2022 at 11:05:23 | INFO | READY Connect to data base
+16-01-2022 at 11:05:28 | ERROR | FAIL connect to 10.21.80.209
+timed out
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001A2F37A94E0>
+    -> <__main__.Runner object at 0x000001A2F13773D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001A2F37A8FE0>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001A2F37CB590>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001A2F3737B00>
+                    |    -> <modbus.driver.Modbus object at 0x000001A2F37CBF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001A2F37CB590>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 23, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001A2F377D260>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    -> <modbus.driver.Modbus object at 0x000001A2F37CBF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+
+TimeoutError: timed out
+16-01-2022 at 11:05:28 | ERROR | FAIL connect to 10.21.80.209
+[WinError 10022] Получен недопустимый аргумент
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001A2F37A94E0>
+    -> <__main__.Runner object at 0x000001A2F13773D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001A2F37A8FE0>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001A2F37CB590>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 69, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001A2F3737B00>
+                    |    -> <modbus.driver.Modbus object at 0x000001A2F37CBF50>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001A2F37CB590>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\driver.py", line 23, in connect
+    self.client.connect()
+    |    |      -> <function ModbusClient.connect at 0x000001A2F377D260>
+    |    -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    -> <modbus.driver.Modbus object at 0x000001A2F37CBF50>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\easymodbus\modbusClient.py", line 86, in connect
+    self.__tcpClientSocket.connect((self.__ipAddress, self.__port))
+    |                               |                 -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    |                               -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+    -> <easymodbus.modbusClient.ModbusClient object at 0x000001A2F37D8990>
+
+OSError: [WinError 10022] Получен недопустимый аргумент
+16-01-2022 at 11:05:28 | INFO | TIME Connecting to 10.21.80.209 | 5.029818534851074
+16-01-2022 at 11:07:16 | INFO | READY Connect to data base
+16-01-2022 at 11:07:16 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 11:07:16 | INFO | TIME Connecting to 10.21.80.209 | 0.048209190368652344
+16-01-2022 at 11:07:17 | INFO | DEVICE 10.21.80.209: READ TIME 1.1972877979278564 | reading 56 registers
+16-01-2022 at 11:07:17 | DEBUG | CLOSE connection
+16-01-2022 at 11:07:25 | INFO | READY Connect to data base
+16-01-2022 at 11:07:25 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 11:07:25 | INFO | TIME Connecting to 10.21.80.209 | 0.06308269500732422
+16-01-2022 at 11:07:26 | INFO | DEVICE 10.21.80.209: READ TIME 1.07295560836792 | reading 56 registers
+16-01-2022 at 11:07:26 | DEBUG | CLOSE connection
+16-01-2022 at 11:09:27 | INFO | READY Connect to data base
+16-01-2022 at 11:09:30 | ERROR | Connection TIMEOUT
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x00000191EF789760>
+    -> <__main__.Runner object at 0x00000191ED3673D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x00000191EF789260>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000191EF7AB690>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 71, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x00000191EF788180>
+                    |    -> <modbus.driver.Modbus object at 0x00000191EF7B4090>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000191EF7AB690>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 185, in <lambda>
+    return wraps(func)(lambda *args, **kwargs : func_timeout(defaultTimeout, func, args=args, kwargs=kwargs))
+           |     |             |       |        |            |               |          |            -> {}
+           |     |             |       |        |            |               |          -> (<modbus.driver.Modbus object at 0x00000191EF7B4090>,)
+           |     |             |       |        |            |               -> <function Modbus.connect at 0x00000191EF7837E0>
+           |     |             |       |        |            -> 3
+           |     |             |       |        -> <function func_timeout at 0x00000191EF783A60>
+           |     |             |       -> {}
+           |     |             -> (<modbus.driver.Modbus object at 0x00000191EF7B4090>,)
+           |     -> <function Modbus.connect at 0x00000191EF7837E0>
+           -> <function wraps at 0x00000191ED11ED40>
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 101, in func_timeout
+    raise FunctionTimedOut('', timeout, func, args, kwargs)
+          |                    |        |     |     -> {}
+          |                    |        |     -> (<modbus.driver.Modbus object at 0x00000191EF7B4090>,)
+          |                    |        -> <function Modbus.connect at 0x00000191EF7837E0>
+          |                    -> 3
+          -> <class 'func_timeout.exceptions.FunctionTimedOut'>
+
+func_timeout.exceptions.FunctionTimedOut: Function connect (args=(<modbus.driver.Modbus object at 0x00000191EF7B4090>,)) (kwargs={}) timed out after 3.000000 seconds.
+
+16-01-2022 at 11:09:30 | INFO | TIME Connecting to 10.21.80.209 | 3.097341537475586
+16-01-2022 at 11:09:48 | INFO | READY Connect to data base
+16-01-2022 at 11:09:48 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 11:09:48 | INFO | TIME Connecting to 10.21.80.209 | 0.0716850757598877
+16-01-2022 at 11:09:49 | INFO | DEVICE 10.21.80.209: READ TIME 1.2284226417541504 | reading 56 registers
+16-01-2022 at 11:09:49 | DEBUG | CLOSE connection
+16-01-2022 at 11:09:54 | INFO | READY Connect to data base
+16-01-2022 at 11:09:57 | ERROR | Connection TIMEOUT
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x000001EAFC769620>
+    -> <__main__.Runner object at 0x000001EAFA3E73D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x000001EAFC769120>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001EAFC78B710>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 71, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x000001EAFC768040>
+                    |    -> <modbus.driver.Modbus object at 0x000001EAFC794110>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x000001EAFC78B710>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 185, in <lambda>
+    return wraps(func)(lambda *args, **kwargs : func_timeout(defaultTimeout, func, args=args, kwargs=kwargs))
+           |     |             |       |        |            |               |          |            -> {}
+           |     |             |       |        |            |               |          -> (<modbus.driver.Modbus object at 0x000001EAFC794110>,)
+           |     |             |       |        |            |               -> <function Modbus.connect at 0x000001EAFC7636A0>
+           |     |             |       |        |            -> 3
+           |     |             |       |        -> <function func_timeout at 0x000001EAFC763920>
+           |     |             |       -> {}
+           |     |             -> (<modbus.driver.Modbus object at 0x000001EAFC794110>,)
+           |     -> <function Modbus.connect at 0x000001EAFC7636A0>
+           -> <function wraps at 0x000001EAFA19ED40>
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 101, in func_timeout
+    raise FunctionTimedOut('', timeout, func, args, kwargs)
+          |                    |        |     |     -> {}
+          |                    |        |     -> (<modbus.driver.Modbus object at 0x000001EAFC794110>,)
+          |                    |        -> <function Modbus.connect at 0x000001EAFC7636A0>
+          |                    -> 3
+          -> <class 'func_timeout.exceptions.FunctionTimedOut'>
+
+func_timeout.exceptions.FunctionTimedOut: Function connect (args=(<modbus.driver.Modbus object at 0x000001EAFC794110>,)) (kwargs={}) timed out after 3.000000 seconds.
+
+16-01-2022 at 11:09:57 | INFO | TIME Connecting to 10.21.80.209 | 3.0824782848358154
+16-01-2022 at 11:10:01 | INFO | READY Connect to data base
+16-01-2022 at 11:10:04 | ERROR | Connection TIMEOUT
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x00000263CBD09620>
+    -> <__main__.Runner object at 0x00000263C9987410>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x00000263CBD09120>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000263CBD2B750>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 71, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x00000263CBD08040>
+                    |    -> <modbus.driver.Modbus object at 0x00000263CBD34150>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x00000263CBD2B750>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 185, in <lambda>
+    return wraps(func)(lambda *args, **kwargs : func_timeout(defaultTimeout, func, args=args, kwargs=kwargs))
+           |     |             |       |        |            |               |          |            -> {}
+           |     |             |       |        |            |               |          -> (<modbus.driver.Modbus object at 0x00000263CBD34150>,)
+           |     |             |       |        |            |               -> <function Modbus.connect at 0x00000263CBD036A0>
+           |     |             |       |        |            -> 3
+           |     |             |       |        -> <function func_timeout at 0x00000263CBD03920>
+           |     |             |       -> {}
+           |     |             -> (<modbus.driver.Modbus object at 0x00000263CBD34150>,)
+           |     -> <function Modbus.connect at 0x00000263CBD036A0>
+           -> <function wraps at 0x00000263C973ED40>
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 101, in func_timeout
+    raise FunctionTimedOut('', timeout, func, args, kwargs)
+          |                    |        |     |     -> {}
+          |                    |        |     -> (<modbus.driver.Modbus object at 0x00000263CBD34150>,)
+          |                    |        -> <function Modbus.connect at 0x00000263CBD036A0>
+          |                    -> 3
+          -> <class 'func_timeout.exceptions.FunctionTimedOut'>
+
+func_timeout.exceptions.FunctionTimedOut: Function connect (args=(<modbus.driver.Modbus object at 0x00000263CBD34150>,)) (kwargs={}) timed out after 3.000000 seconds.
+
+16-01-2022 at 11:10:04 | INFO | TIME Connecting to 10.21.80.209 | 3.0858240127563477
+16-01-2022 at 11:10:13 | INFO | READY Connect to data base
+16-01-2022 at 11:10:16 | ERROR | Connection TIMEOUT
+Traceback (most recent call last):
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 105, in <module>
+    run.polling()
+    |   -> <function Runner.polling at 0x0000019BD10E9620>
+    -> <__main__.Runner object at 0x0000019BCECD73D0>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\run.py", line 96, in polling
+    connect_state = mbp.connect()
+                    |   -> <function ModbusPoll.connect at 0x0000019BD10E9120>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000019BD110B590>
+
+> File "C:\Users\чаичст\PycharmProjects\SCADA\modbus\modbus_poll.py", line 71, in connect
+    connect_state = self.client.connect()
+                    |    |      -> <function Modbus.connect at 0x0000019BD10E8040>
+                    |    -> <modbus.driver.Modbus object at 0x0000019BD110BF90>
+                    -> <modbus.modbus_poll.ModbusPoll object at 0x0000019BD110B590>
+
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 185, in <lambda>
+    return wraps(func)(lambda *args, **kwargs : func_timeout(defaultTimeout, func, args=args, kwargs=kwargs))
+           |     |             |       |        |            |               |          |            -> {}
+           |     |             |       |        |            |               |          -> (<modbus.driver.Modbus object at 0x0000019BD110BF90>,)
+           |     |             |       |        |            |               -> <function Modbus.connect at 0x0000019BD10E36A0>
+           |     |             |       |        |            -> 3
+           |     |             |       |        -> <function func_timeout at 0x0000019BD10E3920>
+           |     |             |       -> {}
+           |     |             -> (<modbus.driver.Modbus object at 0x0000019BD110BF90>,)
+           |     -> <function Modbus.connect at 0x0000019BD10E36A0>
+           -> <function wraps at 0x0000019BCEA8ED40>
+  File "C:\Users\чаичст\PycharmProjects\SCADA\venv\Lib\site-packages\func_timeout\dafunc.py", line 101, in func_timeout
+    raise FunctionTimedOut('', timeout, func, args, kwargs)
+          |                    |        |     |     -> {}
+          |                    |        |     -> (<modbus.driver.Modbus object at 0x0000019BD110BF90>,)
+          |                    |        -> <function Modbus.connect at 0x0000019BD10E36A0>
+          |                    -> 3
+          -> <class 'func_timeout.exceptions.FunctionTimedOut'>
+
+func_timeout.exceptions.FunctionTimedOut: Function connect (args=(<modbus.driver.Modbus object at 0x0000019BD110BF90>,)) (kwargs={}) timed out after 3.000000 seconds.
+
+16-01-2022 at 11:10:16 | INFO | TIME Connecting to 10.21.80.209 | 3.1007168292999268
+16-01-2022 at 11:10:25 | INFO | READY Connect to data base
+16-01-2022 at 11:10:25 | INFO |  READY connection to 10.21.80.209
+16-01-2022 at 11:10:25 | INFO | TIME Connecting to 10.21.80.209 | 0.04854989051818848
+16-01-2022 at 11:10:26 | INFO | DEVICE 10.21.80.209: READ TIME 1.2013449668884277 | reading 56 registers
+16-01-2022 at 11:10:27 | DEBUG | CLOSE connection
