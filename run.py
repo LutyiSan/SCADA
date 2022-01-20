@@ -5,9 +5,12 @@ from modbus.modbus_poll import ModbusPoll
 from convertor import Convertor
 
 
+
+
+
 def grouping_signals(signals_dict):
     count = len(signals_dict)
-    #print("Start LEN ", count)
+    # print("Start LEN ", count)
     new_dict = {'start_address': [], 'read_quantity': [], 'reg_type': [], 'reg_address': [],
                 'signal_quantity': [], 'value_type': [], 'bit_number': [], 'uuid': [], 'present_value': []}
     start = signals_dict[0]['register_address']
@@ -73,15 +76,16 @@ def grouping_signals(signals_dict):
     new_dict['read_quantity'].append(quantity + signals_dict[reg]['quantity'])
     new_dict['reg_type'].append(signals_dict[reg]['registers_type'])
     count2 = len(new_dict['uuid'])
-   # print("After GROUPING LEN ", count2)
-    #print(new_dict)
+    # print("After GROUPING LEN ", count2)
+    # print(new_dict)
+    print(new_dict)
     return new_dict
 
 
 class Runner:
     def __init__(self, device_id):
         self.data_for_db = None
-        logger.add("logs/run.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+       # logger.add("logs/run.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.signals = None
         self.device_settings = None
         self.signals_dict = dict()
@@ -98,6 +102,7 @@ class Runner:
                                     f" `registers_type`, `register_address`, `bit_number`"
                     self.signals = self.db.db_get(signals_query)
                     if self.signals != tuple():
+                        print(self.signals)
                         self.signals_dict = grouping_signals(self.signals)
                     else:
                         logger.debug(f"No signals in Data Base for device {self.device_settings[0]['device_id']}")
@@ -105,7 +110,7 @@ class Runner:
                 logger.debug(f"No DATA in Data Base for device {self.device_settings[0]['device_id']}")
         else:
             logger.error(f"No connect to Data Base")
-        #self.db.disconnect()
+        # self.db.disconnect()
 
     def polling(self):
         self.poll_list = list()
@@ -121,29 +126,21 @@ class Runner:
     def convert(self):
         cv = Convertor(self.signals_dict, self.poll_list)
         self.data_for_db = cv.convert()
-        count = len(self.data_for_db['present_value'])
-        #print(self.data_for_db)
-       # print(count)
+        # count = len(self.data_for_db['present_value'])
+        # print(self.data_for_db)
+
+    # print(count)
 
     def put_to_db(self):
         connect_state = self.db.connect()
         if connect_state:
-            count = len(self.data_for_db['uuid']) -1
+            count = len(self.data_for_db['uuid']) - 1
             i = -1
             while i < count:
                 i += 1
                 timestamp = datetime.datetime.now()
                 query = f"UPDATE modbus SET present_value = '{self.data_for_db['present_value'][i]}', " \
-                                        f"time_read = '{timestamp}' WHERE signal_id = '{self.data_for_db['uuid'][i]}'"
+                        f"time_read = '{timestamp}' WHERE signal_id = '{self.data_for_db['uuid'][i]}'"
 
                 self.db.db_update(query)
             self.db.disconnect()
-
-
-
-#run = Runner(100)
-#run.create_device_polling()
-#cs = run.polling()
-#if cs:
- #   run.convert()
-#run.put_to_db()

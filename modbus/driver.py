@@ -5,12 +5,13 @@ from func_timeout import func_set_timeout
 
 
 class Modbus:
+    # TODO timeout settings
     timeout = 0.2
 
     def __init__(self, ip_address, tcp_port, timeout=0.2):
         self.connect_state = None
         self.retry = None
-        logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+      #  logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.ip_address = ip_address
         self.client = modbusClient.ModbusClient(ip_address, tcp_port)
 
@@ -84,7 +85,7 @@ class Modbus:
             logger.exception(f"FAIL read registers: {reg_address}\n{e}")
         return result
 
-    @func_set_timeout(0.2)
+    @func_set_timeout(timeout)
     def read_di(self, reg_address, quantity):
         result = ['None']
         try:

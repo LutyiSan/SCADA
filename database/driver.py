@@ -6,7 +6,7 @@ from config.config import DB
 
 class DBDriver:
     def __init__(self):
-        logger.add("logs/db.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+     #   logger.add("logs/db.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.cursor = None
         self.connector = None
 
@@ -50,7 +50,4 @@ class DBDriver:
             logger.exception('FAIL close connection to DB', e)
 
 
-#db = DBDriver()
-#db.connect()
-#rs = db.db_get(f"SELECT*FROM `modbus_signals` WHERE `device_id`=14")
-#print(rs, '\n', type(rs))
+

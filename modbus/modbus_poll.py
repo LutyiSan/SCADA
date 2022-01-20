@@ -57,7 +57,7 @@ def converter(value, value_type, bit_number):
 
 class ModbusPoll:
     def __init__(self, device, signals):
-        logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+     #   logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.result_value = None
         self.device = device
         self.signals = signals
@@ -83,7 +83,11 @@ class ModbusPoll:
             if type(return_value) == list and len(return_value) == quantity:
                 self.result_value = return_value
             else:
-                self.result_value = 'fault'
+                self.result_value = list()
+                i = 0
+                while i < quantity:
+                    i += 1
+                    self.result_value.append('fault')
                 logger.debug(f"FAIL reading {self.device['ip_address']} | {register_address}")
         else:
             logger.warning(f"INCORRECT parameter 'quantity' in {self.device['ip_address']} | {register_address}")
@@ -95,7 +99,11 @@ class ModbusPoll:
             if type(return_value) == list and len(return_value) == quantity:
                 self.result_value = return_value
             else:
-                self.result_value = 'fault'
+                self.result_value = list()
+                i = 0
+                while i < quantity:
+                    i += 1
+                    self.result_value.append('fault')
                 logger.debug(f"FAIL reading {self.device['ip_address']} | {register_address}")
         else:
             logger.warning(f"INCORRECT parameter 'quantity' in {self.device['ip_address']} | {register_address}")
@@ -107,7 +115,11 @@ class ModbusPoll:
             if type(return_value) == list and len(return_value) == quantity:
                 self.result_value = return_value
             else:
-                self.result_value = 'fault'
+                self.result_value = list()
+                i = 0
+                while i < quantity:
+                    i += 1
+                    self.result_value.append('fault')
                 logger.debug(f"FAIL reading {self.device['ip_address']} | {register_address}")
         else:
             logger.warning(f"INCORRECT parameter 'quantity' in {self.device['ip_address']} | {register_address}")
@@ -119,7 +131,11 @@ class ModbusPoll:
             if type(return_value) == list and len(return_value) == quantity:
                 self.result_value = return_value
             else:
-                self.result_value = 'fault'
+                self.result_value = list()
+                i = 0
+                while i < quantity:
+                    i += 1
+                    self.result_value.append('fault')
                 logger.debug(f"FAIL reading {self.device['ip_address']} | {register_address}")
         else:
             logger.warning(f"INCORRECT parameter 'quantity' in {self.device['ip_address']} | {register_address}")
@@ -130,6 +146,7 @@ class ModbusPoll:
         start_address = self.signals['start_address']
         read_quantity = self.signals['read_quantity']
         reg_type = self.signals['reg_type']
+        print(reg_type)
         count = len(start_address) -1
         i = -1
         while i < count:

@@ -1,4 +1,4 @@
-POLLING_DEVICE = [100]
+POLLING_DEVICE = [100, 101]
 DB = {'HOST': "localhost",
       'PORT': 3306,
       'USERNAME': 'root',
