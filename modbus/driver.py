@@ -8,10 +8,10 @@ class Modbus:
     # TODO timeout settings
     timeout = 0.2
 
-    def __init__(self, ip_address, tcp_port, timeout=0.2):
+    def __init__(self, ip_address, tcp_port):
         self.connect_state = None
         self.retry = None
-      #  logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+        #  logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.ip_address = ip_address
         self.client = modbusClient.ModbusClient(ip_address, tcp_port)
 
@@ -31,49 +31,87 @@ class Modbus:
         return self.connect_state
 
     def reader(self, type, register_address, quantity):
-        result = ['None']
+        result = list()
         if type == 'hr':
             try:
                 result = self.read_hr(register_address, quantity)
             except:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    result.append('none')
                 logger.error('timeout')
+
         elif type == 'ir':
             try:
                 result = self.read_ir(register_address, quantity)
             except:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    result.append('none')
                 logger.error('timeout')
+
         elif type == 'coil':
             try:
                 result = self.read_coil(register_address, quantity)
             except:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    result.append('none')
                 logger.error('timeout')
+
         elif type == 'di':
             try:
                 result = self.read_di(register_address, quantity)
             except:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    result.append('none')
                 logger.error('timeout')
         return result
 
-
     @func_set_timeout(timeout)
     def read_hr(self, reg_address, quantity):
-        result = ['None']
+        return_result = list()
         try:
-            # logger.info(f"TRY to read registers")
             result = self.client.read_holdingregisters(reg_address, quantity)
+            if type(result) == list and len(result) == quantity:
+                return_result = result
+            else:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    return_result.append('none')
         except Exception as e:
+            i = -1
+            while i < quantity:
+                i += 1
+                return_result.append('none')
             logger.exception(f"FAIL read registers: {reg_address}\n{e}")
-        return result
+        return return_result
 
     @func_set_timeout(timeout)
     def read_ir(self, reg_address, quantity):
-        result = ['None']
+        return_result = list()
         try:
-            # logger.info(f"TRY to read registers")
             result = self.client.read_inputregisters(reg_address, quantity)
+            if type(result) == list and len(result) == quantity:
+                return_result = result
+            else:
+                i = -1
+                while i < quantity:
+                    i += 1
+                    return_result.append('none')
         except Exception as e:
+            i = -1
+            while i < quantity:
+                i += 1
+                return_result.append('none')
             logger.exception(f"FAIL read registers: {reg_address}\n{e}")
-        return result
+        return return_result
 
     @func_set_timeout(timeout)
     def read_coil(self, reg_address, quantity):

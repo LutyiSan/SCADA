@@ -25,7 +25,7 @@ class Convertor:
                 return 'true'
 
     def __to_uint(self, value):
-        if value >= 0:
+        if value[0] >= 0:
             return value
         else:
             bin_value = self.__to_16bit(value)
@@ -49,7 +49,6 @@ class Convertor:
 
     def convert(self):
         count = len(self.uuid)
-        print(count)
         i = 0
         index_data_value = 0
         while i < count:
@@ -64,9 +63,9 @@ class Convertor:
                 # Запись значения типа UINT
                 elif self.value_type[i] == 'uint':
                     coef = 1
-                    if self.data_values[index_data_value:index_data_value + 1][0] != 'fault':
+                    if self.data_values[index_data_value:index_data_value + 1] != 'none':
                         pv = self.__to_uint(self.data_values[index_data_value:index_data_value + 1])
-                        self.present_value.append(pv)
+                        self.present_value.append(pv[0])
                     else:
                         pv = self.data_values[index_data_value:index_data_value + 1]
                         self.present_value.append(pv[0])
@@ -74,7 +73,7 @@ class Convertor:
                     i += 1
                 elif self.value_type[i] == 'bool':
                     coef = 1
-                    if self.data_values[index_data_value:index_data_value + 1][0] != 'fault':
+                    if self.data_values[index_data_value:index_data_value + 1] != 'none':
                         pv = self.__to_bool(self.data_values[index_data_value:index_data_value + 1])
                         self.present_value.append(pv)
                     else:
@@ -82,12 +81,13 @@ class Convertor:
                         self.present_value.append(pv[0])
                     index_data_value += coef
                     i += 1
+
                 elif self.value_type[i] == 'float':
                     coef = 2
+                  #  print(f'IN CONVERT {self.data_values[index_data_value:index_data_value + 1]}')
                     big = self.data_values[index_data_value:index_data_value + 1]
                     little = self.data_values[index_data_value + 1:index_data_value + 2]
-                    if big[0] != 'fault' or little[0] != 'fault':
-                        print(big[0], little[0])
+                    if big[0] != 'none' and little[0] != 'none':
                         pv = convert_registers_to_float([big[0], little[0]])
                         self.present_value.append(pv[0])
                     else:
@@ -95,11 +95,11 @@ class Convertor:
                         self.present_value.append('fault')
                     index_data_value += coef
                     i += 1
+
             elif self.value_type[i] == 'bool' and self.bit_number[i] != 'none':
                 coef = 1
                 while self.reg_address[i] == self.reg_address[i + 1] or self.reg_address[i] == self.reg_address[i - 1]:
-                    if self.data_values[index_data_value:index_data_value + 1][0] != 'fault':
-                        print(self.data_values[index_data_value:index_data_value + 1])
+                    if self.data_values[index_data_value:index_data_value + 1][0] != 'none':
                         pv = self.__to_bool(self.data_values[index_data_value:index_data_value + 1], self.bit_number[i])
                         self.present_value.append(pv)
                     else:
