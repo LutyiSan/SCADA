@@ -1,7 +1,7 @@
 import struct
 
 
-def to_16bit(value):
+def to_16bit_array(value):
     bin_value = bin(value[0])[2:]
     if len(bin_value) != 16:
         zero_array = ""
@@ -23,7 +23,7 @@ def to_bool(value, bit_number=99):
         else:
             return 'false'
     elif 16 > bit_number >= 0:
-        bin_value = to_16bit(value)[bit_number]
+        bin_value = to_16bit_array(value)[bit_number]
         if bin_value == '0':
             return 'false'
         else:
@@ -34,24 +34,25 @@ def to_uint_16(value):
     if value[0] >= 0:
         return value
     else:
-        bin_value = to_16bit(value)
+        bin_value = to_16bit_array(value)
         bin_value = '0b0' + bin_value
         uint_value = int(bin_value, 2)
         return uint_value
 
 
-def to_float_32(floatValue):
+def to_float_32(registers):
     """
     Convert 32 Bit real Value to two 16 Bit Value to send as Modbus Registers
     floatValue: Value to be converted
     return: 16 Bit Register values int[]
     """
-    myList = list()
-    s = bytearray(struct.pack('<f', floatValue))  # little endian
-    myList.append(s[0] | (s[1] << 8))  # Append Least Significant Word
-    myList.append(s[2] | (s[3] << 8))  # Append Most Significant Word
-
-    return myList
+    b = bytearray(4)
+    b[0] = registers[0] & 0xff
+    b[1] = (registers[0] & 0xff00) >> 8
+    b[2] = (registers[1] & 0xff)
+    b[3] = (registers[1] & 0xff00) >> 8
+    returnValue = struct.unpack('<f', b)  # little Endian
+    return returnValue
 
 
 def to_32bit_value(values):
@@ -60,7 +61,7 @@ def to_32bit_value(values):
     registers: 16 Bit Registers
     return: 32 bit value
     """
-    return_value = (int(values[1]) & 0x0000FFFF) | (int((values[0]) << 16) & 0xFFFF0000)
+    return_value = (int(values[0]) & 0x0000FFFF) | (int((values[1]) << 16) & 0xFFFF0000)
     return return_value
 
 
@@ -112,7 +113,6 @@ class Convertor:
 
                 elif self.value_type[i] == 'float':
                     coef = 2
-                    #  print(f'IN CONVERT {self.data_values[index_data_value:index_data_value + 1]}')
                     big = self.data_values[index_data_value:index_data_value + 1]
                     little = self.data_values[index_data_value + 1:index_data_value + 2]
                     if big[0] != 'none' and little[0] != 'none':
@@ -122,6 +122,19 @@ class Convertor:
                         self.present_value.append('fault')
                     index_data_value += coef
                     i += 1
+
+                elif self.value_type[i] == 'uint_32' or self.value_type[i] == 'int_32':
+                    coef = 2
+                    big = self.data_values[index_data_value:index_data_value + 1]
+                    little = self.data_values[index_data_value + 1:index_data_value + 2]
+                    if big[0] != 'none' and little[0] != 'none':
+                        pv = to_32bit_value([big[0], little[0]])
+                        self.present_value.append(pv * self.scale[i])
+                    else:
+                        self.present_value.append('fault')
+                    index_data_value += coef
+                    i += 1
+
 
             elif self.value_type[i] == 'bool' and self.bit_number[i] != 'none':
                 coef = 1
