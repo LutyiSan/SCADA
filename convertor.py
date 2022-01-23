@@ -34,10 +34,7 @@ def to_uint_16(value):
     if value[0] >= 0:
         return value
     else:
-        bin_value = to_16bit_array(value)
-        bin_value = '0b0' + bin_value
-        uint_value = int(bin_value, 2)
-        return uint_value
+        return abs(value) + 32768
 
 
 def to_float_32(registers):
@@ -84,47 +81,49 @@ class Convertor:
             if self.bit_number[i] == 'none' or (self.bit_number[i] != 'none' and self.value_type[i] != 'bool'):
                 # Запись значения типа INT
                 if self.value_type[i] == 'int':
-                    coef = 1
-                    pv = self.data_values[index_data_value:index_data_value + 1]
-                    self.present_value.append(pv[0] * self.scale[i])
-                    i += coef
-                    index_data_value += coef
-                # Запись значения типа UINT
-                elif self.value_type[i] == 'uint':
-                    coef = 1
-                    if self.data_values[index_data_value:index_data_value + 1] != 'none':
-                        pv = to_uint_16(self.data_values[index_data_value:index_data_value + 1])
-                        self.present_value.append(pv[0])
-                    else:
+                    add_quantity = 1
+                    if self.data_values[index_data_value:index_data_value + 1][0] != 'none':
                         pv = self.data_values[index_data_value:index_data_value + 1]
                         self.present_value.append(pv[0] * self.scale[i])
-                    index_data_value += coef
+                    else:
+                        self.present_value.append("fault")
+                    i += add_quantity
+                    index_data_value += add_quantity
+                # Запись значения типа UINT
+                elif self.value_type[i] == 'uint':
+                    add_quantity = 1
+                    if self.data_values[index_data_value:index_data_value + 1][0] != 'none':
+                        pv = to_uint_16(self.data_values[index_data_value:index_data_value + 1])
+                        self.present_value.append(pv[0] * self.scale[i])
+                    else:
+                        self.present_value.append("fault")
+                    index_data_value += add_quantity
                     i += 1
                 elif self.value_type[i] == 'bool':
-                    coef = 1
-                    if self.data_values[index_data_value:index_data_value + 1] != 'none':
+                    add_quantity = 1
+                    if self.data_values[index_data_value:index_data_value + 1][0] != 'none':
                         pv = to_bool(self.data_values[index_data_value:index_data_value + 1])
                         self.present_value.append(pv)
                     else:
-                        pv = self.data_values[index_data_value:index_data_value + 1]
-                        self.present_value.append(pv[0])
-                    index_data_value += coef
+                        self.present_value.append('fault')
+                    index_data_value += add_quantity
                     i += 1
 
                 elif self.value_type[i] == 'float':
-                    coef = 2
+                    add_quantity = 2
                     big = self.data_values[index_data_value:index_data_value + 1]
                     little = self.data_values[index_data_value + 1:index_data_value + 2]
                     if big[0] != 'none' and little[0] != 'none':
                         pv = to_float_32([big[0], little[0]])
+
                         self.present_value.append(pv[0] * self.scale[i])
                     else:
                         self.present_value.append('fault')
-                    index_data_value += coef
+                    index_data_value += add_quantity
                     i += 1
 
                 elif self.value_type[i] == 'uint_32' or self.value_type[i] == 'int_32':
-                    coef = 2
+                    add_quantity = 2
                     big = self.data_values[index_data_value:index_data_value + 1]
                     little = self.data_values[index_data_value + 1:index_data_value + 2]
                     if big[0] != 'none' and little[0] != 'none':
@@ -132,12 +131,11 @@ class Convertor:
                         self.present_value.append(pv * self.scale[i])
                     else:
                         self.present_value.append('fault')
-                    index_data_value += coef
+                    index_data_value += add_quantity
                     i += 1
 
-
             elif self.value_type[i] == 'bool' and self.bit_number[i] != 'none':
-                coef = 1
+                add_quantity = 1
                 while self.reg_address[i] == self.reg_address[i + 1] or self.reg_address[i] == self.reg_address[i - 1]:
                     if self.data_values[index_data_value:index_data_value + 1][0] != 'none':
                         pv = to_bool(self.data_values[index_data_value:index_data_value + 1], self.bit_number[i])
@@ -145,5 +143,5 @@ class Convertor:
                     else:
                         self.present_value.append('fault')
                     i += 1
-                index_data_value += coef
+                index_data_value += add_quantity
         return self.signals

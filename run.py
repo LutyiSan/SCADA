@@ -19,7 +19,7 @@ class Runner:
     def create_device_polling(self):
         if self.db.connect():
             self.device_settings = self.db.db_get(f"SELECT*FROM `devices` WHERE `device_id` = {self.device_id}")
-            if type(self.device_settings) is not tuple or type(self.device_settings) is None :
+            if type(self.device_settings) is not tuple or type(self.device_settings) is None:
                 if self.device_settings[0]['protocol'] == 'modbus':
                     signals_query = f"SELECT*FROM modbus WHERE `device_id`  = {self.device_id} ORDER BY" \
                                     f" `registers_type`, `register_address`, `bit_number`"
@@ -49,7 +49,6 @@ class Runner:
             return True
         else:
             return False
-
 
     def convert(self):
         cv = Convertor(self.signals_dict, self.poll_list)
