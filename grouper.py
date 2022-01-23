@@ -1,7 +1,8 @@
 class Grouper:
     def __init__(self, signals_dict):
         self.return_dict = {'start_address': [], 'read_quantity': [], 'reg_type': [], 'reg_address': [],
-                            'signal_quantity': [], 'value_type': [], 'bit_number': [], 'uuid': [], 'present_value': []}
+                            'signal_quantity': [], 'value_type': [], 'bit_number': [], 'uuid': [], 'present_value': [],
+                            'scale': []}
         self.signals = signals_dict
         self.len_signals = len(self.signals) - 1
         self.reg_address = list()
@@ -11,6 +12,7 @@ class Grouper:
         self.value_type = list()
         self.bit_number = list()
         self.id = list()
+        self.scale = list()
         for i in self.signals:
             self.reg_address.append(i['register_address'])
             self.signal_quantity.append(i['quantity'])
@@ -19,6 +21,7 @@ class Grouper:
             self.value_type.append(i['value_type'])
             self.bit_number.append(i['bit_number'])
             self.id.append(i['signal_id'])
+            self.return_dict['scale'].append(i['scale'])
         self.start_register = self.reg_address[0]
         self.read_quantity = None
 
@@ -38,23 +41,25 @@ class Grouper:
         while idx < self.len_signals:
             idx += 1
             if idx != self.len_signals:
+                # Если адрес регистра + длина запроса равны по значению следующему адресу и тип регистра одинаковый
                 if self.reg_address[idx] + self.query_quanty[idx] == self.reg_address[idx + 1] and \
                         self.reg_type[idx] == self.reg_type[idx + 1]:
                     self.read_quantity += self.query_quanty[idx + 1]
                     self.append_data(self.reg_address[idx], self.signal_quantity[idx],
                                      self.value_type[idx], self.bit_number[idx], self.id[idx])
-
+                # Если адрес регистра такой же как и у следующего и у них одинаковый тип регистра
                 elif self.reg_address[idx] == self.reg_address[idx + 1] and \
                         self.reg_type[idx] == self.reg_type[idx + 1]:
                     self.append_data(self.reg_address[idx], self.signal_quantity[idx],
                                      self.value_type[idx], self.bit_number[idx], self.id[idx])
-
-                elif len(self.return_dict['reg_address']) > 0 and self.reg_address[idx] == \
-                        self.reg_address[idx - 1] and \
-                        self.reg_type[idx] == self.reg_type[idx + 1]:
-                    self.append_data(self.reg_address[idx], self.signal_quantity[idx],
-                                     self.value_type[idx], self.bit_number[idx], self.id[idx])
-
+                # Если адрес регистра такой же как у предыдущего и не такой, как у следующего
+                elif self.reg_address[idx] == self.reg_address[idx - 1] and self.reg_address[idx] != self.reg_address[idx + 1]:
+                    self.return_dict['start_address'].append(self.start_register)
+                    self.return_dict['read_quantity'].append(self.read_quantity)
+                    self.return_dict['reg_type'].append(self.reg_type[idx])
+                    self.start_register = self.reg_address[idx + 1]
+                    self.read_quantity = self.query_quanty[idx + 1]
+                # Любая иная ситуация
                 else:
                     if self.reg_address[idx] - self.query_quanty[idx - 1] == self.reg_address[idx - 1] and \
                             self.reg_type[idx] == self.reg_type[idx - 1]:
@@ -76,7 +81,7 @@ class Grouper:
 
             else:
                 if self.reg_address[idx] - self.query_quanty[idx - 1] == self.reg_address[idx - 1] and \
-                            self.reg_type[idx] == self.reg_type[idx - 1]:
+                        self.reg_type[idx] == self.reg_type[idx - 1]:
                     self.append_data(self.reg_address[idx], self.signal_quantity[idx],
                                      self.value_type[idx], self.bit_number[idx], self.id[idx])
                 else:

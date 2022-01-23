@@ -78,6 +78,7 @@ class Modbus:
         return_result = list()
         try:
             result = self.client.read_holdingregisters(reg_address, quantity)
+
             if type(result) == list and len(result) == quantity:
                 return_result = result
             else:

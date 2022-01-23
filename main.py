@@ -1,5 +1,5 @@
 import time
-
+from loguru import logger
 from run import Runner
 from config import config
 import datetime
@@ -16,5 +16,5 @@ if __name__ == "__main__":
                 run.convert()
                 run.put_to_db()
             stop = datetime.datetime.now()
-            print(f'Circle TIME: {stop - start}')
+            logger.info(f'TIME POLLING device {device}: {stop - start}')
             time.sleep(3)

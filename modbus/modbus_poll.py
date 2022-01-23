@@ -3,56 +3,10 @@ from loguru import logger
 from time import time
 
 
-def to_16_bit(value):
-    bin_value = bin(value)[2:]
-    if len(bin_value) != 16:
-        zero_array = ""
-        count = 16 - len(bin_value)
-        i = 0
-        while i < count:
-            i += 1
-            zero_array += '0'
-        zero_array += bin_value
-        return zero_array
-    else:
-        return bin_value
 
 
-def to_bool(value, bit_number=None):
-    if bit_number is None:
-        if value != 0:
-            return 'true'
-        else:
-            return 'false'
-    elif 16 > bit_number >= 0:
-        bin_value = to_16_bit(value)[bit_number]
-        if bin_value == '0':
-            return 'false'
-        else:
-            return 'true'
 
 
-def to_uint(value):
-    if value >= 0:
-        return value
-    else:
-        bin_value = to_16_bit(value)
-        bin_value = '0b0' + bin_value
-        uint_value = int(bin_value, 2)
-        return uint_value
-
-
-def converter(value, value_type, bit_number):
-    if value_type == 'int' or value_type == "float":
-        return value
-    elif value_type == 'bool':
-        result = to_bool(value, bit_number)
-        return result
-    elif value_type == 'uint':
-        result = to_uint(value)
-        return result
-    else:
-        return 'fault type'
 
 
 class ModbusPoll:
@@ -78,13 +32,14 @@ class ModbusPoll:
         return connect_state
 
     def read_hr(self, register_address, quantity):
+        ret_val = list()
         if quantity in range(1, 125):
-            return_value = self.client.reader('hr', register_address, quantity)
-            for i in return_value:
-                self.result_value.append(i)
+            get_val = self.client.reader('hr', register_address, quantity)
+            for i in get_val:
+                ret_val.append(i)
         else:
             logger.warning(f"INCORRECT parameter 'quantity' in {self.device['ip_address']} | {register_address}")
-        return self.result_value
+        return ret_val
 
     def read_ir(self, register_address, quantity):
         if quantity in range(1, 125):
@@ -132,19 +87,22 @@ class ModbusPoll:
         start_address = self.signals['start_address']
         read_quantity = self.signals['read_quantity']
         reg_type = self.signals['reg_type']
-        count = len(start_address) -1
+        count = len(start_address) - 1
         i = -1
         while i < count:
             i += 1
+
             if reg_type[i] == 'holding registers':
                 self.result_value = self.read_hr(start_address[i], read_quantity[i])
+
             elif reg_type[i] == 'input registers':
-                self.result_value = self.read_hr(start_address[i], read_quantity[i])
+                self.result_value = self.read_ir(start_address[i], read_quantity[i])
             elif reg_type[i] == 'coils':
                 self.result_value = self.read_coil(start_address[i], read_quantity[i])
             elif reg_type[i]['registers_type'] == 'discrete inputs':
                 self.result_value = self.read_di(start_address[i], read_quantity[i])
             for r in self.result_value:
+
                 self.res_list.append(r)
         stop_reading_device = time()
         avg_time = stop_reading_device - start_read_device
