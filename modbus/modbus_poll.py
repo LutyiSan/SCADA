@@ -3,15 +3,9 @@ from loguru import logger
 from time import time
 
 
-
-
-
-
-
-
 class ModbusPoll:
     def __init__(self, device, signals):
-     #   logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
+        #   logger.add("logs/modbus.log", format="{time:DD-MM-YYYY at HH:mm:ss} | {level} | {message}", rotation="2MB")
         self.result_value = list()
         self.device = device
         self.signals = signals
@@ -91,10 +85,8 @@ class ModbusPoll:
         i = -1
         while i < count:
             i += 1
-
             if reg_type[i] == 'holding registers':
                 self.result_value = self.read_hr(start_address[i], read_quantity[i])
-
             elif reg_type[i] == 'input registers':
                 self.result_value = self.read_ir(start_address[i], read_quantity[i])
             elif reg_type[i] == 'coils':
@@ -102,7 +94,6 @@ class ModbusPoll:
             elif reg_type[i]['registers_type'] == 'discrete inputs':
                 self.result_value = self.read_di(start_address[i], read_quantity[i])
             for r in self.result_value:
-
                 self.res_list.append(r)
         stop_reading_device = time()
         avg_time = stop_reading_device - start_read_device

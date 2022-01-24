@@ -17,4 +17,4 @@ if __name__ == "__main__":
                 run.put_to_db()
             stop = datetime.datetime.now()
             logger.info(f'TIME POLLING device {device}: {stop - start}')
-            time.sleep(3)
+            time.sleep(0.3)

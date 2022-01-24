@@ -6,7 +6,6 @@ class Grouper:
         self.signals = signals_dict
         self.len_signals = len(self.signals) - 1
         self.reg_address = list()
-       # self.signal_quantity = list()
         self.query_quantity = list()
         self.reg_type = list()
         self.value_type = list()
@@ -15,7 +14,6 @@ class Grouper:
         self.scale = list()
         for i in self.signals:
             self.reg_address.append(i['register_address'])
-          #  self.signal_quantity.append(i['quantity'])
             self.query_quantity.append(i['quantity'])
             self.reg_type.append(i['registers_type'])
             self.value_type.append(i['value_type'])
