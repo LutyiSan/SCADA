@@ -2,8 +2,8 @@ from loguru import logger
 import datetime
 from database.driver import DBDriver
 from modbus.modbus_poll import ModbusPoll
-from functions.convertor import Convertor
-from functions.grouper import Grouper
+from modbus.convertor import Convertor
+from modbus.grouper import Grouper
 
 
 class Runner:
