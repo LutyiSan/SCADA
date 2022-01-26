@@ -1,9 +1,8 @@
 import time
 from loguru import logger
-from modbus_run import Runner
+from modbus.modbus_run import Runner
 from database.driver import DBDriver
 from config import config
-
 
 if __name__ == "__main__":
     while True:
