@@ -1,4 +1,50 @@
-h2{
-color: green;
-text-align: center;
+.button{
+position: relative;
+top: 90px;
+margin: 15px;
+cursor: pointer;
+}
+button{
+border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.main:before {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  content: '';
+}
+#left-menu {
+  float: left;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+}
+#center-div {
+
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+}
+#right-menu {
+    float: right;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.form-save-to-db{
+position: relative;
+top: 100px;
+left: 80%;
+color: #D4B930;
 }

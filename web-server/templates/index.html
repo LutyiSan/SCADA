@@ -5,8 +5,47 @@
     <link href="{{ url_for('static', path='/css/main.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', path='/js/main.js') }}"></script>
 </head>
+<style>
+body{
+background-image: url({{url_for('static', path='/images/body-fon.svg')}});
+}
+</style>
 <body>
-<h2>Wellcome to L_Scada-project</h2>
-<div id="id1">hfgfh</div>
+<div id="main">
+
+<div id="left-menu">
+    <img class="button" id="new-project"  src="{{url_for('static', path='/images/new-project.svg')}}"><br>
+    <img class="button"  id="new-device" src="{{url_for('static', path='/images/new-device.svg')}}"><br>
+    <img class="button" id="new-tags" src="{{url_for('static', path='/images/new-tags.svg')}}"><br>
+    <img class="button" id="ex-servers" src="{{url_for('static', path='/images/ex-servers.svg')}}"><br>
+</div>
+<div id="center-div">
+    <form class='form-save-to-db' id="save-project" action="/create-project" method="post">
+        <p><input type="text">Project Name</p>
+        <p><input type="text">Project Description</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button></p>
+    </form>
+     <form class='form-save-to-db' id="save-device" action="/create-device" method="post">
+        <p><input type="text">Device-ID</p>
+        <p><input type="text">Device Name</p>
+         <p><input type="text">Protocol</p>
+        <p><input type="text">ip address</p>
+         <p><input type="text">TCP(UDP) Port</p>
+        <p><input type="text">Timeout(default 3s)</p>
+         <p><input type="text">Connect Retries(default 2)</p>
+        <p><input type="text">Read Multiple (Y,N)</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button></p>
+    </form>
+</div>
+
+
+
+
+<div id="right-menu">
+    <img class="button" id="db" src="{{url_for('static', path='/images/db.svg')}}"><br>
+    <img class="button"  id="runtime" src="{{url_for('static', path='/images/runtime.svg')}}"><br>
+    <img class="button"  id="tools" src="{{url_for('static', path='/images/tools.svg')}}"><br>
+</div>
+</div>
 </body>
 </html>
