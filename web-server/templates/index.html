@@ -70,6 +70,28 @@ background-image: url({{url_for('static', path='/images/body-fon.svg')}});
         <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
             <img id='close-bacnet-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
+        <form class='form-save-to-db' id="modbus-tag" action="/create/bacnet/tag" method="post">
+        <p><input type="text">  Device Modbus -ID</p>
+        <p><input type="text">  Tag Name</p>
+         <p><select size="2" multiple name="reg-type[]">
+             <option value="0">Coils</option>
+              <option value="1">Discrete Inputs</option>
+              <option value="2">Holding Registers</option>
+              <option value="3">Input Registers</option>
+         </select>  Registers Type</p>
+        <p><input type="text">  Register Address</p>
+            <p><input type="text">  Quantity</p>
+            <p><input type="text">  Bit Number</p>
+            <p><select size="2" multiple name="object-type[]">
+             <option value="bool">bool</option>
+              <option value="int">integer</option>
+              <option value="uint">unsigned</option>
+              <option value="float">float</option>
+         </select>  Value Type</p>
+            <p><input type="text">  Scale</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='close-modbus-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
+    </form>
 </div>
 
 
