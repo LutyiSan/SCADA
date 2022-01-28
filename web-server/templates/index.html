@@ -20,21 +20,55 @@ background-image: url({{url_for('static', path='/images/body-fon.svg')}});
     <img class="button" id="ex-servers" src="{{url_for('static', path='/images/ex-servers.svg')}}"><br>
 </div>
 <div id="center-div">
-    <form class='form-save-to-db' id="save-project" action="/create-project" method="post">
-        <p><input type="text">Project Name</p>
-        <p><input type="text">Project Description</p>
-        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button></p>
+    <form class='form-save-to-db' id="save-project" action="/create/project" method="post">
+        <p><input type="text">  Project Name</p>
+        <p><input type="text">  Project Description</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+        <img id='close-save-project' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
-     <form class='form-save-to-db' id="save-device" action="/create-device" method="post">
-        <p><input type="text">Device-ID</p>
-        <p><input type="text">Device Name</p>
-         <p><input type="text">Protocol</p>
-        <p><input type="text">ip address</p>
-         <p><input type="text">TCP(UDP) Port</p>
-        <p><input type="text">Timeout(default 3s)</p>
-         <p><input type="text">Connect Retries(default 2)</p>
-        <p><input type="text">Read Multiple (Y,N)</p>
-        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button></p>
+     <form class='form-save-to-db' id="save-device" action="/create/device" method="post">
+        <p><input type="text">  Device-ID</p>
+        <p><input type="text">  Device Name</p>
+         <p><select size="2" multiple name="protocol[]">
+         <option value="modbus">Modbus/TCP</option>
+             <option value="bacnet">BACnet/IP</option>
+         </select>  Protocol</p>
+        <p><input type="text">  IP address</p>
+         <p><input type="text">  TCP(UDP) Port</p>
+        <p><input type="text">  Timeout(default 3s)</p>
+         <p><input type="text">  Connect Retries(default 2)</p>
+        <p><select size="2" multiple name="multiread[]">
+         <option value="Y">accept</option>
+             <option value="N">denied</option>
+         </select>  Read Multiple</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='close-save-device' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
+    </form>
+    <form class='form-save-to-db' id="type-tag">
+         <p><select id="sel-tag" size="2" multiple name="protocol[]">
+         <option value="modbus">Modbus-Tag</option>
+             <option value="bacnet">BACnet-Tag</option>
+         </select>  Protocol</p>
+        <p><img id='save-type-tag' src="{{url_for('static', path='/images/save-button.svg')}}">
+            <img id='close-type-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
+    </form>
+    <form class='form-save-to-db' id="bacnet-tag" action="/create/bacnet/tag" method="post">
+        <p><input type="text">  Device-ID</p>
+        <p><input type="text">  Tag Name</p>
+         <p><select size="2" multiple name="object-type[]">
+             <option value="0">Analog Input</option>
+              <option value="1">Analog Output</option>
+              <option value="2">Analog Value</option>
+              <option value="3">Binary Input</option>
+              <option value="4">Binary Output</option>
+              <option value="5">Binary Value</option>
+              <option value="13">MultiState Input</option>
+              <option value="14">MultiState Output</option>
+             <option value="19">MultiState Value</option>
+         </select>  Object Type</p>
+        <p><input type="text">  Object ID</p>
+        <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='close-bacnet-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
 </div>
 

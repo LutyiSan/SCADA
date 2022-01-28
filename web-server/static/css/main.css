@@ -11,8 +11,12 @@ border: none;
     margin: 0;
     padding: 0;
 }
-
-
+input{
+width: 150px;
+}
+select{
+width: 160px;
+}
 
 .main:before {
   height: 100%;
@@ -42,9 +46,15 @@ border: none;
   text-align: right;
 }
 
+#bacnet-tag, #modbus-tag{
+display: none;
+}
+
+
 .form-save-to-db{
 position: relative;
 top: 100px;
 left: 80%;
 color: #D4B930;
+display: none;
 }
