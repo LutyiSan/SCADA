@@ -13,9 +13,17 @@ border: none;
 }
 input{
 width: 150px;
+font-size: 18px;
+font-family: 'Roboto Slab', serif;
+color: #171612;
+background-color: #D4B930;
 }
 select{
 width: 155px;
+font-size: 18px;
+font-family: 'Roboto Slab', serif;
+color: #171612;
+background-color: #D4B930;
 }
 
 .main:before {
