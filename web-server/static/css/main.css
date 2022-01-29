@@ -54,7 +54,7 @@ background-color: #D4B930;
   text-align: right;
 }
 
-#bacnet-tag, #modbus-tag{
+#bacnet-tag, #modbus-tag, #save-project{
 display: none;
 }
 

@@ -45,6 +45,7 @@ background-image: url({{url_for('static', path='/images/body-fon.svg')}});
              <option value="N">denied</option>
          </select>  Read Multiple</p>
         <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='next-device' src="{{url_for('static', path='/images/next.svg')}}">
             <img id='close-save-device' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
     <form class='form-save-to-db' id="type-tag">
@@ -71,6 +72,7 @@ background-image: url({{url_for('static', path='/images/body-fon.svg')}});
          </select>  Object Type</p>
         <p><input type="text">  Object ID</p>
         <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='next-bacnet-tag' src="{{url_for('static', path='/images/next.svg')}}">
             <img id='close-bacnet-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
         <form class='form-save-to-db' id="modbus-tag" action="/create/bacnet/tag" method="post">
@@ -93,6 +95,7 @@ background-image: url({{url_for('static', path='/images/body-fon.svg')}});
          </select>  Value Type</p>
             <p><input type="text">  Scale</p>
         <p><button type="submit"><img src="{{url_for('static', path='/images/save-button.svg')}}"></button>
+            <img id='next-modbus-tag' src="{{url_for('static', path='/images/next.svg')}}">
             <img id='close-modbus-tag' src="{{url_for('static', path='/images/close-form.svg')}}"></p>
     </form>
 </div>
